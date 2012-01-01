@@ -19,6 +19,9 @@
         <servlet-name>EJBServlet</servlet-name>
         <servlet-class>org.jboss.test.clusterbench.web.ejb.LocalEjbServlet</servlet-class>
     </servlet>    
+        <servlet-name>MemoryUsageServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.load.MemoryUsageServlet</servlet-class>
+    </servlet>
     
     <servlet-mapping>
         <servlet-name>GranularSessionServlet</servlet-name>
@@ -32,6 +35,9 @@
         <servlet-name>EJBServlet</servlet-name>
         <url-pattern>/ejb</url-pattern>
     </servlet-mapping>
+        <servlet-name>MemoryUsageServlet</servlet-name>
+        <url-pattern>/memoryusage</url-pattern>
+    </servlet-mapping>    
     
     <session-config>
         <!-- minutes -->
