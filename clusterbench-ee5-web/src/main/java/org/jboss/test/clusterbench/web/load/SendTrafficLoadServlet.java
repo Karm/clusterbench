@@ -5,7 +5,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +18,6 @@ import org.jboss.test.clusterbench.common.load.SendTrafficLoad;
  * 
  * This simple servlet is used for stressing the server's outbound bandwidth.
  */
-@WebServlet(name = "SendTrafficLoadServlet", urlPatterns = { "/sendtrafficload" })
 public class SendTrafficLoadServlet extends HttpServlet {
     private static final Logger log = Logger.getLogger(AverageSystemLoadServlet.class.getName());
     private final SendTrafficLoad sendTrafficLoad = new SendTrafficLoad();

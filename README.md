@@ -57,3 +57,7 @@ AverageSystemLoadServlet
 BusyConnectorsLoadServlet
 ------------------------
 [/clusterbench/busyconnectorsload?milliseconds=10000](http://localhost:8080/clusterbench/busyconnectorsload?milliseconds=10000)
+
+SendTrafficLoadServlet
+------------------------
+[/clusterbench/sendtrafficload?kilobytes=100](http://localhost:8080/clusterbench/sendtrafficload?kilobytes=100)
