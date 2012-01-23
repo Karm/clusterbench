@@ -18,9 +18,14 @@
     <servlet>
         <servlet-name>EJBServlet</servlet-name>
         <servlet-class>org.jboss.test.clusterbench.web.ejb.LocalEjbServlet</servlet-class>
-    </servlet>    
+    </servlet> 
+    <servlet>   
         <servlet-name>MemoryUsageServlet</servlet-name>
         <servlet-class>org.jboss.test.clusterbench.web.load.MemoryUsageServlet</servlet-class>
+    </servlet>
+    <servlet>   
+        <servlet-name>BusyConnectorsLoadServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.load.BusyConnectorsLoadServlet</servlet-class>
     </servlet>
     
     <servlet-mapping>
@@ -35,9 +40,14 @@
         <servlet-name>EJBServlet</servlet-name>
         <url-pattern>/ejb</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>MemoryUsageServlet</servlet-name>
         <url-pattern>/memoryusage</url-pattern>
-    </servlet-mapping>    
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BusyConnectorsLoadServlet</servlet-name>
+        <url-pattern>/busyconnectorsload</url-pattern>
+    </servlet-mapping>
     
     <session-config>
         <!-- minutes -->
