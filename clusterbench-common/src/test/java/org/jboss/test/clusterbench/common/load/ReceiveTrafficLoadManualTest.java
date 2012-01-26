@@ -12,8 +12,8 @@ import org.apache.commons.httpclient.NameValuePair;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.junit.Test;
 
-public class ReceiveTrafficLoadTest {
-   private static final Logger log = Logger.getLogger(ReceiveTrafficLoadTest.class.getName());
+public class ReceiveTrafficLoadManualTest {
+   private static final Logger log = Logger.getLogger(ReceiveTrafficLoadManualTest.class.getName());
    private static final int KILOBYTES = 4;
    
    @Test

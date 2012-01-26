@@ -4,7 +4,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Remove;
 import javax.ejb.Stateful;
 import javax.enterprise.context.SessionScoped;
-import org.jboss.ejb3.annotation.Clustered;
+//import org.jboss.ejb3.annotation.Clustered;
 import org.jboss.test.clusterbench.common.SerialBean;
 
 /**
@@ -14,7 +14,7 @@ import org.jboss.test.clusterbench.common.SerialBean;
 @Stateful
 @LocalBean
 @SessionScoped
-@Clustered
+//@Clustered
 public class LocalStatefulSB extends SerialBean {
 
     @Remove
