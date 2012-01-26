@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.jboss.test.clusterbench.common.load.SendTrafficLoad;
-
 /**
  * ReceiveTrafficLoadServlet
  * 
@@ -35,7 +33,7 @@ public class ReceiveTrafficLoadServlet extends HttpServlet {
             // pro forma
             data = null;
         } else {
-            log.log(Level.WARNING, "WARNING - no \"data\" attribute has been found.");
+            log.log(Level.WARNING, "WARNING - no \"data\" parameter has been found.");
             response.getWriter().print("ERROR");
         }
 

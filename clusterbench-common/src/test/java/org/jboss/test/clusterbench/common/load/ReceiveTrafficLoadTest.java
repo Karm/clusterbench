@@ -14,24 +14,25 @@ import org.junit.Test;
 
 public class ReceiveTrafficLoadTest {
    private static final Logger log = Logger.getLogger(ReceiveTrafficLoadTest.class.getName());
-
+   private static final int KILOBYTES = 4;
+   
    @Test
-   public void testReceiveTrafficLoadMetric() throws HttpException, IOException {
+   public void receiveTrafficLoadMetricManualTest() throws HttpException, IOException {
       SendTrafficLoad sendTrafficLoad = new SendTrafficLoad();
       String url = "http://localhost:8080/clusterbench/receivetrafficload";
       HttpClient httpClient = new HttpClient();
       PostMethod postMethod = null;
       httpClient.getHttpConnectionManager().getParams().setConnectionTimeout(30000);
       postMethod = new PostMethod(url);
-      NameValuePair[] data = { new NameValuePair("data", sendTrafficLoad.generateRubbish(512)) };
+      NameValuePair[] data = { new NameValuePair("data", sendTrafficLoad.generateRubbish(KILOBYTES)) };
       postMethod.setRequestBody(data);
       //postMethod.setFollowRedirects(true);
       httpClient.executeMethod(postMethod);
       String response = postMethod.getResponseBodyAsString();
-      //DONE;Received;512;KB
-      int value = Integer.parseInt(response.split(";")[2]);
-      assertEquals(512, value);
       log.log(Level.INFO,"RESPONSE:"+response);
+      //DONE;Received;KILOBYTES;KB
+      int value = Integer.parseInt(response.split(";")[2]);
+      assertEquals(KILOBYTES, value);
    }
 
 }

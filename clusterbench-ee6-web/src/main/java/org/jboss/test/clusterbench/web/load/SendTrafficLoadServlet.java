@@ -21,7 +21,7 @@ import org.jboss.test.clusterbench.common.load.SendTrafficLoad;
  */
 @WebServlet(name = "SendTrafficLoadServlet", urlPatterns = { "/sendtrafficload" })
 public class SendTrafficLoadServlet extends HttpServlet {
-    private static final Logger log = Logger.getLogger(AverageSystemLoadServlet.class.getName());
+    private static final Logger log = Logger.getLogger(SendTrafficLoadServlet.class.getName());
     private final SendTrafficLoad sendTrafficLoad = new SendTrafficLoad();
     
     @Override
@@ -30,7 +30,7 @@ public class SendTrafficLoadServlet extends HttpServlet {
         String rubbish = sendTrafficLoad.generateRubbish(kilobytes);
         log.log(Level.INFO, "DONE");
         response.setContentType("text/plain");
-        response.getWriter().print("DONE;"+(rubbish.length()/1024)+"KB of rubbish;"+rubbish);
+        response.getWriter().print("DONE;"+(rubbish.length()/1024)+";KB of rubbish;"+rubbish);
     }
 
     @Override

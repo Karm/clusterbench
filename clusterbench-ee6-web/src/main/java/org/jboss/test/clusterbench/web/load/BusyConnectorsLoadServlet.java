@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "BusyConnectorsLoadServlet", urlPatterns = { "/busyconnectorsload" })
 public class BusyConnectorsLoadServlet extends HttpServlet {
-    private static final Logger log = Logger.getLogger(AverageSystemLoadServlet.class.getName());
+    private static final Logger log = Logger.getLogger(BusyConnectorsLoadServlet.class.getName());
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
