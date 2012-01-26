@@ -2,7 +2,7 @@ package org.jboss.test.clusterbench.ejb.stateful;
 
 import javax.ejb.Remove;
 import javax.ejb.Stateful;
-//import org.jboss.ejb3.annotation.Clustered;
+import org.jboss.ejb3.annotation.Clustered;
 import org.jboss.test.clusterbench.common.SerialBean;
 
 /**
@@ -10,7 +10,7 @@ import org.jboss.test.clusterbench.common.SerialBean;
  * @version Dec 2011
  */
 @Stateful
-//@Clustered
+@Clustered
 public class RemoteStatefulSBImpl extends SerialBean implements RemoteStatefulSB {
 
     @Remove
