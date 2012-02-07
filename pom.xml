@@ -6,27 +6,28 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>clusterbench</name>
-    
+
     <modules>
         <module>clusterbench-common</module>
+        <module>clusterbench-native</module>
     </modules>
-      
+
     <properties>
         <linkXRef>false</linkXRef>
     </properties>
-    
+
     <profiles>
-        <profile>                    
-            <id>ee6</id>            
+        <profile>
+            <id>ee6</id>
             <activation>
-                <activeByDefault>true</activeByDefault>            
+                <activeByDefault>true</activeByDefault>
             </activation>
             <modules>
                 <module>clusterbench-ee6-ear</module>
                 <module>clusterbench-ee6-web</module>
                 <module>clusterbench-ee6-ejb</module>
-            </modules> 
-        </profile>   
+            </modules>
+        </profile>
         <profile>
             <id>ee5</id>
             <modules>
@@ -37,64 +38,69 @@
         </profile>
     </profiles>
 
-	<build>
-		<pluginManagement>
-			<plugins>
-				<!-- Checkstyle -->
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-checkstyle-plugin</artifactId>
-					<!-- <version>${version.checkstyle.plugin}</version> -->
-					<configuration>
-						<configLocation>jboss-as-checkstyle/checkstyle.xml</configLocation>
-						<consoleOutput>true</consoleOutput>
-						<failsOnError>true</failsOnError>
-						<useFile />
-					</configuration>
-					<dependencies>
-						<dependency>
-							<groupId>org.jboss.as</groupId>
-							<artifactId>jboss-as-build-config</artifactId>
-							<version>7.1.0.Final-SNAPSHOT</version>
-							<!-- <version>${project.version}</version> -->
-						</dependency>
-					</dependencies>
-					<executions>
-						<execution>
-							<id>check-style</id>
-							<phase>compile</phase>
-							<goals>
-								<goal>checkstyle</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-					<configuration>
-						<excludes>
-							<exclude>**/Manual*.java</exclude>
-							<exclude>**/*ManualTest.java</exclude>
-							<exclude>**/*ManualTestCase.java</exclude>
-						</excludes>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
+  <build>
+    <pluginManagement>
+      <plugins>
+        <!-- Native for JNI and C-->
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>native-maven-plugin</artifactId>
+        </plugin>
+        <!-- Checkstyle -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-checkstyle-plugin</artifactId>
+          <!-- <version>${version.checkstyle.plugin}</version> -->
+          <configuration>
+            <configLocation>jboss-as-checkstyle/checkstyle.xml</configLocation>
+            <consoleOutput>true</consoleOutput>
+            <failsOnError>true</failsOnError>
+            <useFile />
+          </configuration>
+          <dependencies>
+            <dependency>
+              <groupId>org.jboss.as</groupId>
+              <artifactId>jboss-as-build-config</artifactId>
+              <version>7.1.0.Final-SNAPSHOT</version>
+              <!-- <version>${project.version}</version> -->
+            </dependency>
+          </dependencies>
+          <executions>
+            <execution>
+              <id>check-style</id>
+              <phase>compile</phase>
+              <goals>
+                <goal>checkstyle</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <configuration>
+            <excludes>
+              <exclude>**/Manual*.java</exclude>
+              <exclude>**/*ManualTest.java</exclude>
+              <exclude>**/*ManualTestCase.java</exclude>
+            </excludes>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 
-    <distributionManagement>
-        <repository>
-            <id>nexus-releases</id>
-            <name>Nexus Release Repository</name>
-            <url>http://dev27:8081/nexus/content/repositories/releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>nexus-snapshots</id>
-            <name>Nexus Snapshot Repository</name>
-            <url>http://dev27:8081/nexus/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
+  <distributionManagement>
+    <repository>
+      <id>nexus-releases</id>
+      <name>Nexus Release Repository</name>
+      <url>http://dev27:8081/nexus/content/repositories/releases</url>
+    </repository>
+    <snapshotRepository>
+      <id>nexus-snapshots</id>
+      <name>Nexus Snapshot Repository</name>
+      <url>http://dev27:8081/nexus/content/repositories/snapshots</url>
+    </snapshotRepository>
+  </distributionManagement>
 
 </project>
