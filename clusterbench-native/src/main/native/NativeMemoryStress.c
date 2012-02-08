@@ -1,7 +1,7 @@
 /*
  ============================================================================
- Name        :
- Author      : Michal Karm Babacek
+ Name        : NativeMemoryStress
+ Author      : Michal Karm Babacek <karm@email.cz>
  Version     :
  Copyright   : Devil cares
  Description : in C, C99 fashion
@@ -15,7 +15,7 @@
 #define MEGABYTE 1024*1024
 JNIEXPORT jint JNICALL Java_org_jboss_test_clusterbench_common_load_NativeMemoryStress_allocateMegabytes (JNIEnv *env, jobject obj, jint megabytes, jint seconds) {
   char *data;
-  printf("Gonna allocate %d megabytes and hold on for %d.\n",megabytes, seconds);
+  printf("I am gonna allocate %d megabytes and hold on for %d seconds.\n",megabytes, seconds);
   data = (char *)malloc(megabytes * MEGABYTE * sizeof(char));
 
   if (data == NULL) {
@@ -26,9 +26,8 @@ JNIEXPORT jint JNICALL Java_org_jboss_test_clusterbench_common_load_NativeMemory
 
   //Fill it up so as to force the kernel to actually take that memory.
   memset(data,1,megabytes * MEGABYTE * sizeof(char));
-
   sleep(seconds);
-  printf("Gonna free it.\n");
+  printf("I am gonna free it.\n");
   free(data);
   return 0;
 }

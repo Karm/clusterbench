@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
-    
+
     <parent>
         <artifactId>clusterbench</artifactId>
         <groupId>org.jboss.test</groupId>
@@ -18,6 +19,72 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <profiles>
+        <profile>
+            <id>win32</id>
+            <activation>
+                <property>
+                    <name>platform</name>
+                    <value>win32</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <tasks>
+                                        <copy
+                                            file="${project.build.directory}/../../clusterbench-native/win32/target/libMemStressNative32.dll"
+                                            tofile="${project.build.directory}/clusterbench-ee6/lib/libMemStressNative32.dll" />
+                                    </tasks>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>linux64</id>
+            <activation>
+                <property>
+                    <name>platform</name>
+                    <value>linux64</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                                <configuration>
+                                    <tasks>
+                                        <copy
+                                            file="${project.build.directory}/../../clusterbench-native/linux64/target/libMemStressNative64.so"
+                                            tofile="${project.build.directory}/clusterbench-ee6/lib/libMemStressNative64.so" />
+                                    </tasks>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <build>
         <finalName>clusterbench-ee5</finalName>
@@ -42,7 +109,7 @@
             </plugin>
         </plugins>
     </build>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.jboss.test</groupId>
@@ -57,5 +124,5 @@
             <type>war</type>
         </dependency>
     </dependencies>
-    
+
 </project>

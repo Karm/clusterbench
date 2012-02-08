@@ -1,48 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <parent>
+    <parent>
+        <groupId>org.jboss.test</groupId>
+        <artifactId>clusterbench</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
     <groupId>org.jboss.test</groupId>
-    <artifactId>clusterbench</artifactId>
+    <artifactId>clusterbench-native</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-  </parent>
+    <name>${project.artifactId}</name>
 
-  <groupId>org.jboss.test</groupId>
-  <artifactId>clusterbench-native</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
-  <name>JNI - native parent</name>
+    <packaging>pom</packaging>
 
-  <packaging>pom</packaging>
+    <profiles>
 
-  <profiles>
+        <profile>
+            <id>win32</id>
+            <activation>
+                <property>
+                    <name>platform</name>
+                    <value>win32</value>
+                </property>
+            </activation>
+            <modules>
+                <module>win32</module>
+            </modules>
+        </profile>
 
-    <profile>
-      <id>win32</id>
-      <activation>
-        <property>
-          <name>platform</name>
-          <value>win32</value>
-        </property>
-      </activation>
-      <modules>
-        <module>win32</module>
-      </modules>
-    </profile>
+        <profile>
+            <id>linux64</id>
+            <activation>
+                <property>
+                    <name>platform</name>
+                    <value>linux64</value>
+                </property>
+            </activation>
+            <modules>
+                <module>linux64</module>
+            </modules>
+        </profile>
 
-    <profile>
-      <id>linux64</id>
-      <activation>
-        <property>
-          <name>platform</name>
-          <value>linux64</value>
-        </property>
-      </activation>
-      <modules>
-        <module>linux64</module>
-      </modules>
-    </profile>
-
-  </profiles>
+    </profiles>
 
 </project>
