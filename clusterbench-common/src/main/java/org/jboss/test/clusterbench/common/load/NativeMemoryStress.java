@@ -47,6 +47,6 @@ public class NativeMemoryStress {
         System.load(pathToLib);
     }
 
-    public native int allocateMegabytes(int megabytes, int seconds);
+    public native int allocateMegabytes(int megabytes, int milliseconds);
 
 }

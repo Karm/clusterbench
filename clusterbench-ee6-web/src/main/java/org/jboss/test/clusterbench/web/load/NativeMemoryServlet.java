@@ -25,10 +25,10 @@ public class NativeMemoryServlet extends HttpServlet {
    
    @Override
    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      int seconds = Integer.parseInt(request.getParameter("seconds"));
+      int milliseconds = Integer.parseInt(request.getParameter("milliseconds"));
       int megabytes = Integer.parseInt(request.getParameter("megabytes")); 
       response.setContentType("text/plain");
-      response.getWriter().print(nativeMemoryStress.allocateMegabytes(megabytes, seconds));
+      response.getWriter().print(nativeMemoryStress.allocateMegabytes(megabytes, milliseconds));
    }
 
    @Override
