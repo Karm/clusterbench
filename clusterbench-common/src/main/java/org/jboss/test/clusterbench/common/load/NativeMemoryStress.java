@@ -27,7 +27,7 @@ public class NativeMemoryStress {
             if (osName.startsWith("windows")) {
                 pathToLib = NativeMemoryStress.class.getResource("NativeMemoryStress.class").getPath().split("/lib/")[0] + "/lib/libMemStressNative32.dll";
             } else if (osName.startsWith("linux")) {
-                pathToLib = NativeMemoryStress.class.getResource("NativeMemoryStress.class").getPath().split("/lib/")[0] + "/lib/libMemStressNative32.dll";
+                pathToLib = NativeMemoryStress.class.getResource("NativeMemoryStress.class").getPath().split("/lib/")[0] + "/lib/libMemStressNative32.so";
             } else if (osName.startsWith("sunos")) {
                 throw new UnsupportedOperationException("I am sorry, your system \"" + osName + "\" is not supported at the moment.");
             } else {
