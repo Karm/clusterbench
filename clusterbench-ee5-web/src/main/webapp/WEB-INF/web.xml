@@ -2,7 +2,7 @@
 <web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
     <distributable/>
-    
+
     <servlet>
         <servlet-name>HttpSessionServlet</servlet-name>
         <servlet-class>org.jboss.test.clusterbench.web.session.HttpSessionServlet</servlet-class>
@@ -12,37 +12,45 @@
         <servlet-class>org.jboss.test.clusterbench.web.session.GranularSessionServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>EJBServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.ejb.LocalEjbServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>AverageSystemLoadServlet</servlet-name>
         <servlet-class>org.jboss.test.clusterbench.web.load.AverageSystemLoadServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>EJBServlet</servlet-name>
-        <servlet-class>org.jboss.test.clusterbench.web.ejb.LocalEjbServlet</servlet-class>
-    </servlet> 
-    <servlet>   
         <servlet-name>MemoryUsageServlet</servlet-name>
         <servlet-class>org.jboss.test.clusterbench.web.load.MemoryUsageServlet</servlet-class>
     </servlet>
-    <servlet>   
+    <servlet>
         <servlet-name>BusyConnectorsLoadServlet</servlet-name>
         <servlet-class>org.jboss.test.clusterbench.web.load.BusyConnectorsLoadServlet</servlet-class>
     </servlet>
-    <servlet>   
+    <servlet>
         <servlet-name>SendTrafficLoadServlet</servlet-name>
         <servlet-class>org.jboss.test.clusterbench.web.load.SendTrafficLoadServlet</servlet-class>
     </servlet>
-    
+    <servlet>
+        <servlet-name>NativeMemoryServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.load.NativeMemoryServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ReceiveTrafficLoadServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.load.ReceiveTrafficLoadServlet</servlet-class>
+    </servlet>
+
     <servlet-mapping>
         <servlet-name>GranularSessionServlet</servlet-name>
         <url-pattern>/granular</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AverageSystemLoadServlet</servlet-name>
-        <url-pattern>/averagesystemload</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>EJBServlet</servlet-name>
         <url-pattern>/ejb</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AverageSystemLoadServlet</servlet-name>
+        <url-pattern>/averagesystemload</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>MemoryUsageServlet</servlet-name>
@@ -56,7 +64,15 @@
         <servlet-name>SendTrafficLoadServlet</servlet-name>
         <url-pattern>/sendtrafficload</url-pattern>
     </servlet-mapping>
-    
+    <servlet-mapping>
+        <servlet-name>NativeMemoryServlet</servlet-name>
+        <url-pattern>/nativememory</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReceiveTrafficLoadServlet</servlet-name>
+        <url-pattern>/receivetrafficload</url-pattern>
+    </servlet-mapping>
+
     <session-config>
         <!-- minutes -->
         <session-timeout>1</session-timeout>
