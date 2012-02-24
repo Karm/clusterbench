@@ -54,11 +54,9 @@
                             </fileNames>
                         </source>
                     </sources>
-
                     <linkerStartOptions>
                         <linkerStartOption>-shared -mno-cygwin -Wl,--add-stdcall-alias</linkerStartOption>
                     </linkerStartOptions>
-
                 </configuration>
                 <executions>
                     <execution>
@@ -71,7 +69,7 @@
                             <workingDirectory>${basedir}</workingDirectory>
                             <javahOutputFileName>nativeStuff.h</javahOutputFileName>
                             <javahClassNames>
-                                <javahClassName>net.tricoder.jnitest.NativeStuff</javahClassName>
+                                <javahClassName>org.jboss.test.clusterbench.common.load.NativeMemoryStress</javahClassName>
                             </javahClassNames>
                         </configuration>
                         <goals>
