@@ -1,10 +1,8 @@
 package org.jboss.test.clusterbench.web.load;
 
 import java.io.IOException;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.management.JMException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

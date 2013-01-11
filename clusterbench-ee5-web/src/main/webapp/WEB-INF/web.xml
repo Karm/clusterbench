@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
-    
+<web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
     <!-- CONFIGURATION -->
-    <distributable/>
-    
+    <distributable />
+
     <session-config>
         <!-- in minutes -->
-        <session-timeout>1</session-timeout>        
+        <session-timeout>1</session-timeout>
     </session-config>
 
 
     <!-- SERVLETS -->
-    
+
     <!-- Session -->
     <servlet>
         <servlet-name>HttpSessionServlet</servlet-name>
@@ -21,26 +23,7 @@
         <servlet-name>HttpSessionServlet</servlet-name>
         <url-pattern>/session</url-pattern>
     </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>GranularHttpSessionServlet</servlet-name>
-        <servlet-class>org.jboss.test.clusterbench.web.session.GranularHttpSessionServlet</servlet-class>
-    </servlet>    
-    <servlet-mapping>
-        <servlet-name>GranularHttpSessionServlet</servlet-name>
-        <url-pattern>/granular</url-pattern>
-    </servlet-mapping>
-    
-    <!-- EJB -->
-    <servlet>
-        <servlet-name>LocalEjbServlet</servlet-name>
-        <servlet-class>org.jboss.test.clusterbench.web.ejb.LocalEjbServlet</servlet-class>
-    </servlet>    
-    <servlet-mapping>
-        <servlet-name>LocalEjbServlet</servlet-name>
-        <url-pattern>/ejb</url-pattern>
-    </servlet-mapping>
-    
+
     <!-- Load -->
     <servlet>
         <servlet-name>AverageSystemLoadServlet</servlet-name>
@@ -54,11 +37,11 @@
         <servlet-name>MemoryUsageServlet</servlet-name>
         <servlet-class>org.jboss.test.clusterbench.web.load.MemoryUsageServlet</servlet-class>
     </servlet>
-    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>MemoryUsageServlet</servlet-name>
         <url-pattern>/memoryusage</url-pattern>
     </servlet-mapping>
-    <servlet>   
+    <servlet>
         <servlet-name>BusyConnectorsLoadServlet</servlet-name>
         <servlet-class>org.jboss.test.clusterbench.web.load.BusyConnectorsLoadServlet</servlet-class>
     </servlet>
@@ -66,7 +49,7 @@
         <servlet-name>BusyConnectorsLoadServlet</servlet-name>
         <url-pattern>/busyconnectorsload</url-pattern>
     </servlet-mapping>
-    <servlet>   
+    <servlet>
         <servlet-name>SendTrafficLoadServlet</servlet-name>
         <servlet-class>org.jboss.test.clusterbench.web.load.SendTrafficLoadServlet</servlet-class>
     </servlet>
@@ -90,5 +73,5 @@
         <servlet-name>ReceiveTrafficLoadServlet</servlet-name>
         <url-pattern>/receivetrafficload</url-pattern>
     </servlet-mapping>
-  
+
 </web-app>

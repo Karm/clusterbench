@@ -1,34 +1,39 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-    <head>
-        <title>ClusterBench</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="shortcut icon" href="favicon.ico">        
-    </head>
-    <body>
-        <h1>Hello World, Hello ClusterBench!</h1>
-        <h2>Flavor</h2>
-        <p>EE6</p>
+<head>
+<title>ClusterBench</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="favicon.ico">
+</head>
+<body>
+ <h1>Hello World, Hello ClusterBench!</h1>
+ <h2>Flavor</h2>
+ <p>EE6</p>
 
-        <h2>Usage</h2>
-        <ul>
-            <li><b>JsfManagedBean</b> <a href="faces/jsfmanaged.xhtml">/faces/jsfmanaged.xhtml</a></li>
-            <li><b>CdiServlet</b> <a href="cdi">/cdi</a></li>
-            <li><b>LocalEjbServlet</b> <a href="ejb">/ejb</a></li>
-            <li><b>LocalSingletonEjbServlet</b> <a href="singletonejb">/singletonejb</a>, <a href ="singleton">/singleton</a></li>
-            <li><b>GranularSessionServlet</b> <a href="granular">/granular</a></li>
-            <li><b>HttpSessionServlet</b> <a href="session">/session</a></li>
-            <li><b>AverageSystemLoadServlet</b> <a href="averagesystemload?milliseconds=20000&threads=4">/averagesystemload?milliseconds=20000&threads=4</a></li>
-            <li><b>BusyConnectorsLoadServlet</b> <a href="busyconnectorsload?milliseconds=10000">/busyconnectorsload?milliseconds=10000</a></li>
-            <li><b>SendTrafficLoadServlet</b> <a href="sendtrafficload?kilobytes=100">/sendtrafficload?kilobytes=100</a></li>
-            <li><b>ReceiveTrafficLoadServlet</b> Set <i>data</i> in POST method to /receivetrafficload. See receiveTrafficLoadMetricManualTest in clusterbench-common.</li>
-            <li><b>MemoryUsageServlet</b> <a href="memoryusage?milliseconds=20000&megabytes=500">/memoryusage?milliseconds=20000&megabytes=500</a></li>
-            <li><b>NativeMemoryServlet</b> <a href="nativememory?milliseconds=20000&megabytes=400">/nativememory?milliseconds=20000&megabytes=400</a>  Note: Requires clusterbench-native</li>
-        </ul>
+ <h2>Usage</h2>
+ <ul>
+  <li><b>HttpSessionServlet</b> <a href="session">/session</a>
+  </li>
+  <li><b>AverageSystemLoadServlet</b> <a
+   href="averagesystemload?milliseconds=20000&threads=4">/averagesystemload?milliseconds=20000&threads=4</a>
+  </li>
+  <li><b>BusyConnectorsLoadServlet</b> <a
+   href="busyconnectorsload?milliseconds=10000">/busyconnectorsload?milliseconds=10000</a>
+  </li>
+  <li><b>SendTrafficLoadServlet</b> <a
+   href="sendtrafficload?kilobytes=100">/sendtrafficload?kilobytes=100</a>
+  </li>
+  <li><b>ReceiveTrafficLoadServlet</b> Set <i>data</i> in POST
+   method to /receivetrafficload. See receiveTrafficLoadMetricManualTest
+   in clusterbench-common.</li>
+  <li><b>MemoryUsageServlet</b> <a
+   href="memoryusage?milliseconds=20000&megabytes=500">/memoryusage?milliseconds=20000&megabytes=500</a>
+  </li>
+ </ul>
 
-        <h2>Sources</h2>
-        <p>
-            <a href="https://github.com/rhusar/clusterbench">https://github.com/rhusar/clusterbench</a>
-        </p>
-    </body>
+ <h2>Sources</h2>
+ <p>
+  <a href="https://github.com/Karm/clusterbench">https://github.com/Karm/clusterbench</a>
+ </p>
+</body>
 </html>
