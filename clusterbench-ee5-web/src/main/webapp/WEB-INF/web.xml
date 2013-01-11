@@ -58,14 +58,6 @@
         <url-pattern>/sendtrafficload</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>NativeMemoryServlet</servlet-name>
-        <servlet-class>org.jboss.test.clusterbench.web.load.NativeMemoryServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>NativeMemoryServlet</servlet-name>
-        <url-pattern>/nativememory</url-pattern>
-    </servlet-mapping>
-    <servlet>
         <servlet-name>ReceiveTrafficLoadServlet</servlet-name>
         <servlet-class>org.jboss.test.clusterbench.web.load.ReceiveTrafficLoadServlet</servlet-class>
     </servlet>
