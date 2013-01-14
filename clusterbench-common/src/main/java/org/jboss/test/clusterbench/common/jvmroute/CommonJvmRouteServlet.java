@@ -17,7 +17,12 @@ public class CommonJvmRouteServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     response.setContentType("text/plain");
-    response.getWriter().print(System.getProperty("jvmRoute", "unknown jvmRoute")+";"+System.getProperty("instance-id", "unknown instance-id")+";"+System.getProperty("jboss.jvmRoute", "unknown jboss.jvmRoute"));
+    response.getWriter().print(System.getProperty("jvmRoute", "unknown jvmRoute") + ";" 
+        + System.getProperty("jboss.mod_cluster.jvmRoute", "unknown jboss.mod_cluster.jvmRoute") + ";" 
+        + System.getProperty("instance-id", "unknown instance-id") + ";" 
+        + System.getProperty("jboss.domain.web.instance-id", "unknown jboss.domain.web.instance-id") + ";" 
+        + System.getProperty("jboss.jvmRoute", "unknown jboss.jvmRoute")
+    );
   }
 
   @Override
