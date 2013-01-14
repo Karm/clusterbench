@@ -14,42 +14,20 @@ It comes in 2 flavors for Java EE 5 and 6:
 
 Output files:
 
-    ./clusterbench-ee5-ear/target/clusterbench-ee5.ear
-    ./clusterbench-ee6-ear/target/clusterbench-ee6.ear
-
-Furthermore, if you run:
-
-    $ mvn clean install -Pee6,ee5,linux64
-
-you will get both ```ee5``` and ```ee6``` builds and a linux64 native ```clusterbench-native/linux64/target/libMemStressNative64.so```. The same for win32 and .dll.
+    ./clusterbench-ee5-ear/target/clusterbench-ee5-web.war
+    ./clusterbench-ee6-ear/target/clusterbench-ee6-web.war
 
 Issues
 ------
 
 Create them on GitHub:
-[https://github.com/rhusar/clusterbench/issues](https://github.com/rhusar/clusterbench/issues)
+[https://github.com/Karm/clusterbench/issues](https://github.com/Karm/clusterbench/issues)
 
 Servlets
 ========
 
-CdiServlet
-----------
-[/clusterbench/cdi](http://localhost:8080/clusterbench/cdi)
-
-LocalEjbServlet
----------------
-[/clusterbench/ejb](http://localhost:8080/clusterbench/ejb)
-
-LocalSingletonEjbServlet
-------------------------
-[/clusterbench/singleton](http://localhost:8080/clusterbench/singleton)
-
-GranularSessionServlet
-----------------------
-[/clusterbench/granular](http://localhost:8080/clusterbench/granular)
-
 HttpSessionServlet
--------------------
+------------------
 [/clusterbench/session](http://localhost:8080/clusterbench/session)
 
 MemoryUsageServlet
@@ -61,9 +39,13 @@ AverageSystemLoadServlet
 [/clusterbench/averagesystemload?milliseconds=10000&threads=4](http://localhost:8080/clusterbench/averagesystemload?milliseconds=10000&threads=4)
 
 BusyConnectorsLoadServlet
-------------------------
+-------------------------
 [/clusterbench/busyconnectorsload?milliseconds=10000](http://localhost:8080/clusterbench/busyconnectorsload?milliseconds=10000)
 
 SendTrafficLoadServlet
-------------------------
+----------------------
 [/clusterbench/sendtrafficload?kilobytes=100](http://localhost:8080/clusterbench/sendtrafficload?kilobytes=100)
+
+ReceiveTrafficLoadServlet
+-------------------------
+ Set ```data``` in POST method to ```/receivetrafficload```. See receiveTrafficLoadMetricManualTest in clusterbench-common.

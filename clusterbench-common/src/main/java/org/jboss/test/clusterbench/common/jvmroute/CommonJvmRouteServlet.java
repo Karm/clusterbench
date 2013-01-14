@@ -12,17 +12,20 @@ public class CommonJvmRouteServlet extends HttpServlet {
 
   @SuppressWarnings("unused")
   private static final Logger log = Logger.getLogger(CommonJvmRouteServlet.class.getName());
-  public static final String KEY = CommonJvmRouteServlet.class.getName();
+  private static final String[] properties = new String[] { "jvmRoute", "jboss.mod_cluster.jvmRoute", "instance-id", "jboss.domain.web.instance-id", "jboss.jvmRoute" };
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String jvmRoute = "unknown";
+    for (String property : properties) {
+      String value = System.getProperty(property, jvmRoute);
+      if (!value.equals(jvmRoute) && value.length() > 0) {
+        jvmRoute = value;
+        break;
+      }
+    }
     response.setContentType("text/plain");
-    response.getWriter().print(System.getProperty("jvmRoute", "unknown jvmRoute") + ";" 
-        + System.getProperty("jboss.mod_cluster.jvmRoute", "unknown jboss.mod_cluster.jvmRoute") + ";" 
-        + System.getProperty("instance-id", "unknown instance-id") + ";" 
-        + System.getProperty("jboss.domain.web.instance-id", "unknown jboss.domain.web.instance-id") + ";" 
-        + System.getProperty("jboss.jvmRoute", "unknown jboss.jvmRoute")
-    );
+    response.getWriter().print(jvmRoute);
   }
 
   @Override
