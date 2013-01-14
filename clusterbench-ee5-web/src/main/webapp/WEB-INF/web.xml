@@ -11,7 +11,6 @@
         <session-timeout>1</session-timeout>
     </session-config>
 
-
     <!-- SERVLETS -->
 
     <!-- Session -->
@@ -22,6 +21,16 @@
     <servlet-mapping>
         <servlet-name>HttpSessionServlet</servlet-name>
         <url-pattern>/session</url-pattern>
+    </servlet-mapping>
+
+    <!-- JvmRoute -->
+    <servlet>
+        <servlet-name>JvmRouteServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.jvmroute.JvmRouteServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JvmRouteServlet</servlet-name>
+        <url-pattern>/jvmroute</url-pattern>
     </servlet-mapping>
 
     <!-- Load -->
