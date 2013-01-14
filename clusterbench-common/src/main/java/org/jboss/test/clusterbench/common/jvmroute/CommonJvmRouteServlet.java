@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public class CommonJvmRouteServlet extends HttpServlet {
 
-  @SuppressWarnings("unused")
   private static final Logger log = Logger.getLogger(CommonJvmRouteServlet.class.getName());
   private static final String[] properties = new String[] { "jvmRoute", "jboss.mod_cluster.jvmRoute", "instance-id", "jboss.domain.web.instance-id", "jboss.jvmRoute" };
   private static final String UNKNOWN = "unknown";
@@ -51,7 +50,7 @@ public class CommonJvmRouteServlet extends HttpServlet {
           jvmRoute2 = (String) mbsc.getAttribute(on, "jvmRoute");
         } catch (InstanceNotFoundException ex1) {
           try {
-            
+
             // Crap. It was not Catalina..., let's try jboss.web:
             on = new ObjectName("jboss.web:type=Engine");
             jvmRoute3 = (String) mbsc.getAttribute(on, "jvmRoute");
@@ -59,32 +58,45 @@ public class CommonJvmRouteServlet extends HttpServlet {
             // Well, it looks like AS7 with no jvmRoute set, let's try to retrieve instance-id...
           } catch (InstanceNotFoundException ex2) {
             try {
-            on = new ObjectName("jboss.as:subsystem=web");
-            jvmRoute4 = (String) mbsc.getAttribute(on, "instance-id");
+              on = new ObjectName("jboss.as:subsystem=web");
+              jvmRoute4 = (String) mbsc.getAttribute(on, "instance-id");
             } catch (InstanceNotFoundException ex3) {
-             log.log(Level.WARNING, "We have failed to determine the jvmRoute.");
+              log.log(Level.WARNING, "We have failed to determine the jvmRoute.");
             }
           }
         }
 
       } catch (AttributeNotFoundException e) {
-        // TODO Auto-generated catch block
+        log.log(Level.SEVERE, ":-(");
         e.printStackTrace();
       } catch (MalformedObjectNameException e) {
-        // TODO Auto-generated catch block
+        log.log(Level.SEVERE, ":-(");
         e.printStackTrace();
       } catch (MBeanException e) {
-        // TODO Auto-generated catch block
+        log.log(Level.SEVERE, ":-(");
         e.printStackTrace();
       } catch (ReflectionException e) {
-        // TODO Auto-generated catch block
+        log.log(Level.SEVERE, ":-(");
         e.printStackTrace();
       } catch (NullPointerException e) {
-        // TODO Auto-generated catch block
+        log.log(Level.SEVERE, ":-(");
         e.printStackTrace();
       }
     }
-    response.getWriter().print("jvmRoute1:" + jvmRoute1 + ", jvmRoute2:" + jvmRoute2 + ", jvmRoute3:" + jvmRoute3 + ", jvmRoute4:" + jvmRoute4);
+
+    String jvmRoute = UNKNOWN;
+    if (!jvmRoute1.equals(UNKNOWN)) {
+      jvmRoute = jvmRoute1;
+    } else if (!jvmRoute2.equals(UNKNOWN)) {
+      jvmRoute = jvmRoute2;
+    } else if (!jvmRoute3.equals(UNKNOWN)) {
+      jvmRoute = jvmRoute3;
+    } else if (!jvmRoute4.equals(UNKNOWN)) {
+      jvmRoute = jvmRoute4;
+    } else {
+      log.log(Level.WARNING, "We have failed to determine the jvmRoute.");
+    }
+    response.getWriter().print(jvmRoute);
 
   }
 
