@@ -1,6 +1,5 @@
 package org.jboss.test.clusterbench.common.jvmroute;
 
-import java.io.IOException;
 import java.lang.management.ManagementFactory;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,23 +11,14 @@ import javax.management.MBeanServer;
 import javax.management.MalformedObjectNameException;
 import javax.management.ObjectName;
 import javax.management.ReflectionException;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
-public class CommonJvmRouteServlet extends HttpServlet {
-
-  private static final long serialVersionUID = 726150838261866065L;
-  private static final Logger log = Logger.getLogger(CommonJvmRouteServlet.class.getName());
+public class CommonJvmRoute {
+  private static final long serialVersionUID = 3691025554701624250L;
+  private static final Logger log = Logger.getLogger(CommonJvmRoute.class.getName());
   private static final String[] properties = new String[] { "jvmRoute", "jboss.mod_cluster.jvmRoute", "instance-id", "jboss.domain.web.instance-id", "jboss.jvmRoute" };
   private static final String UNKNOWN = "unknown";
 
-  @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    request.getSession();
-    response.setContentType("text/plain");
-
+  public String jvmRoute() {
     // This should work for both AS5 and AS7 with reasonable set jvmRoute property.
     String jvmRoute1 = UNKNOWN;
     String jvmRoute2 = UNKNOWN;
@@ -98,22 +88,14 @@ public class CommonJvmRouteServlet extends HttpServlet {
     } else {
       log.log(Level.WARNING, "We have failed to determine the jvmRoute.");
     }
-    response.getWriter().print(jvmRoute);
-
+    return jvmRoute;
   }
 
-  @Override
-  public String getServletInfo() {
-    return "By invoking JvmRouteServlet, you get the node's JvmRoute. Warning: It is done via System.getProperty(\"jvmRoute\", \"unknown\")";
-  }
-
-  protected String getInitParameter(String name, String defaultValue) {
-    String value = this.getInitParameter(name);
-
-    if (value == null) {
-      value = this.getServletContext().getInitParameter(name);
-    }
-
-    return (value != null) ? value : defaultValue;
-  }
+  /*
+   * protected String getInitParameter(String name, String defaultValue) { String value = this.getInitParameter(name);
+   * 
+   * if (value == null) { value = this.getServletContext().getInitParameter(name); }
+   * 
+   * return (value != null) ? value : defaultValue; }
+   */
 }

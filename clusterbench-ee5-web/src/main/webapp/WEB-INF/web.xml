@@ -33,6 +33,16 @@
         <url-pattern>/jvmroute</url-pattern>
     </servlet-mapping>
 
+    <!-- RequestInfo -->
+    <servlet>
+        <servlet-name>RequestInfoServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.jvmroute.RequestInfoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RequestInfoServlet</servlet-name>
+        <url-pattern>/requestinfo</url-pattern>
+    </servlet-mapping>
+
     <!-- Load -->
     <servlet>
         <servlet-name>AverageSystemLoadServlet</servlet-name>
