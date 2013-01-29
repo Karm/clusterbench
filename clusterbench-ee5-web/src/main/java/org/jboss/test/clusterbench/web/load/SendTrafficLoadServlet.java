@@ -16,23 +16,24 @@ import org.jboss.test.clusterbench.common.load.SendTrafficLoad;
  * 
  * @author Michal Babacek
  * 
- * This simple servlet is used for stressing the server's outbound bandwidth.
+ *         This simple servlet is used for stressing the server's outbound bandwidth.
  */
 public class SendTrafficLoadServlet extends HttpServlet {
-    private static final Logger log = Logger.getLogger(AverageSystemLoadServlet.class.getName());
-    private final SendTrafficLoad sendTrafficLoad = new SendTrafficLoad();
-    
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int kilobytes = Integer.parseInt(request.getParameter("kilobytes"));
-        String rubbish = sendTrafficLoad.generateRubbish(kilobytes);
-        log.log(Level.INFO, "DONE");
-        response.setContentType("text/plain");
-        response.getWriter().print("DONE;"+(rubbish.length()/1024)+"KB of rubbish;"+rubbish);
-    }
+  private static final long serialVersionUID = 5082480885189698355L;
+  private static final Logger log = Logger.getLogger(AverageSystemLoadServlet.class.getName());
+  private final SendTrafficLoad sendTrafficLoad = new SendTrafficLoad();
 
-    @Override
-    public String getServletInfo() {
-        return "By invoking SendTrafficLoadServlet, you stress server's outbound bandwidth.";
-    }
+  @Override
+  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    int kilobytes = Integer.parseInt(request.getParameter("kilobytes"));
+    String rubbish = sendTrafficLoad.generateRubbish(kilobytes);
+    log.log(Level.INFO, "DONE");
+    response.setContentType("text/plain");
+    response.getWriter().print("DONE;" + (rubbish.length() / 1024) + "KB of rubbish;" + rubbish);
+  }
+
+  @Override
+  public String getServletInfo() {
+    return "By invoking SendTrafficLoadServlet, you stress server's outbound bandwidth.";
+  }
 }

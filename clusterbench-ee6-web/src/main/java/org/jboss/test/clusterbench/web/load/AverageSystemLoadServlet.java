@@ -32,6 +32,7 @@ import org.jboss.test.clusterbench.common.load.AverageSystemLoad;
  */
 @WebServlet(name = "AverageSystemLoadServlet", urlPatterns = { "/averagesystemload" })
 public class AverageSystemLoadServlet extends HttpServlet {
+  private static final long serialVersionUID = 5852747171571276015L;
   private static final Logger log = Logger.getLogger(AverageSystemLoadServlet.class.getName());
   private final AverageSystemLoad averageSystemLoad = new AverageSystemLoad();
 

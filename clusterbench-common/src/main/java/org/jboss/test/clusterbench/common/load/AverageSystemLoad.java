@@ -13,7 +13,6 @@ import java.util.logging.Logger;
  */
 public class AverageSystemLoad {
   private static final Logger log = Logger.getLogger(AverageSystemLoad.class.getName());
-
   private List<LoadRunner> loadRunners = new ArrayList<LoadRunner>();
   private long operationStarted = 0L;
 

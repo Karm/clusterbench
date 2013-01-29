@@ -23,24 +23,25 @@ import javax.servlet.http.HttpServletResponse;
  * 
  */
 public class BusyConnectorsLoadServlet extends HttpServlet {
-    private static final Logger log = Logger.getLogger(AverageSystemLoadServlet.class.getName());
+  private static final long serialVersionUID = 9137679673576887686L;
+  private static final Logger log = Logger.getLogger(AverageSystemLoadServlet.class.getName());
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int milliseconds = Integer.parseInt(request.getParameter("milliseconds"));
-        // Yes, Thread.sleep() in a servlet :-) The reason is that we want to pretend some thinktime.
-        try {
-            Thread.sleep(milliseconds);
-        } catch (InterruptedException e) {
-            log.log(Level.SEVERE, "Whoops, our thread has been interrupted.");
-        }
-        log.log(Level.INFO, "DONE");
-        response.setContentType("text/plain");
-        response.getWriter().print("DONE");
+  @Override
+  protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    int milliseconds = Integer.parseInt(request.getParameter("milliseconds"));
+    // Yes, Thread.sleep() in a servlet :-) The reason is that we want to pretend some thinktime.
+    try {
+      Thread.sleep(milliseconds);
+    } catch (InterruptedException e) {
+      log.log(Level.SEVERE, "Whoops, our thread has been interrupted.");
     }
+    log.log(Level.INFO, "DONE");
+    response.setContentType("text/plain");
+    response.getWriter().print("DONE");
+  }
 
-    @Override
-    public String getServletInfo() {
-        return "By invoking BusyConnectorsLoadServlet, you stress connector's busyness.";
-    }
+  @Override
+  public String getServletInfo() {
+    return "By invoking BusyConnectorsLoadServlet, you stress connector's busyness.";
+  }
 }

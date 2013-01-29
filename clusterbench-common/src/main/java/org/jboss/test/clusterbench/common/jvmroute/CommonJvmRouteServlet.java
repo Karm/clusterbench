@@ -19,12 +19,14 @@ import javax.servlet.http.HttpServletResponse;
 
 public class CommonJvmRouteServlet extends HttpServlet {
 
+  private static final long serialVersionUID = 726150838261866065L;
   private static final Logger log = Logger.getLogger(CommonJvmRouteServlet.class.getName());
   private static final String[] properties = new String[] { "jvmRoute", "jboss.mod_cluster.jvmRoute", "instance-id", "jboss.domain.web.instance-id", "jboss.jvmRoute" };
   private static final String UNKNOWN = "unknown";
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    request.getSession();
     response.setContentType("text/plain");
 
     // This should work for both AS5 and AS7 with reasonable set jvmRoute property.
