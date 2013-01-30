@@ -23,13 +23,21 @@ public class RequestInfoServlet extends HttpServlet {
     response.setCharacterEncoding("UTF-8");
     StringBuilder responseText = new StringBuilder();
     responseText.append("Request URI: " + request.getRequestURI());
+    responseText.append("\n");
     responseText.append("Path info: " + request.getPathInfo());
+    responseText.append("\n");
     responseText.append("Query string: " + request.getQueryString());
+    responseText.append("\n");
     responseText.append("Host header: " + request.getHeader("Host"));
+    responseText.append("\n");
     responseText.append("JVM route: " + commonJvmRoute.jvmRoute());
+    responseText.append("\n");
     responseText.append("Session ID: " + session.getId());
+    responseText.append("\n");
     responseText.append("Session isNew: " + session.isNew());
+    responseText.append("\n");
     responseText.append("Session ServletContext: " + session.getServletContext());
+    responseText.append("\n");
     response.getWriter().print(responseText.toString());
   }
 
