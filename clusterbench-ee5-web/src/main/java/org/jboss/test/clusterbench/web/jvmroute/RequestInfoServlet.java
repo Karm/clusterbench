@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.jboss.test.clusterbench.common.jvmroute.CommonJvmRoute;
 
@@ -17,14 +18,18 @@ public class RequestInfoServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     // Gives it a JSESSIONID
-    request.getSession();
+    HttpSession session = request.getSession();
     response.setContentType("text/plain");
+    response.setCharacterEncoding("UTF-8");
     StringBuilder responseText = new StringBuilder();
     responseText.append("Request URI: " + request.getRequestURI());
     responseText.append("Path info: " + request.getPathInfo());
     responseText.append("Query string: " + request.getQueryString());
     responseText.append("Host header: " + request.getHeader("Host"));
     responseText.append("JVM route: " + commonJvmRoute.jvmRoute());
+    responseText.append("Session ID: " + session.getId());
+    responseText.append("Session isNew: " + session.isNew());
+    responseText.append("Session ServletContext: " + session.getServletContext());
     response.getWriter().print(responseText.toString());
   }
 
