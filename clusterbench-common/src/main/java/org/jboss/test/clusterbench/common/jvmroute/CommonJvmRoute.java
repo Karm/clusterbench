@@ -55,6 +55,9 @@ public class CommonJvmRoute {
             } catch (InstanceNotFoundException ex3) {
               jvmRoute4 = UNKNOWN;
               log.log(Level.WARNING, "We have failed to determine the jvmRoute.");
+            } catch (NullPointerException e) {
+              jvmRoute4 = UNKNOWN;
+              log.log(Level.WARNING, "We have failed to determine the jvmRoute.");
             }
           }
         }
