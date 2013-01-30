@@ -11,10 +11,13 @@ import javax.servlet.http.HttpSession;
 public class CommonRequestInfoServlet extends HttpServlet {
 
   private static final long serialVersionUID = -2126246174508889343L;
-  private CommonJvmRoute commonJvmRoute = new CommonJvmRoute();
+  private CommonJvmRoute commonJvmRoute = null;
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    if (commonJvmRoute == null) {
+      commonJvmRoute = new CommonJvmRoute();
+    }
     // Gives it a JSESSIONID
     HttpSession session = request.getSession();
     response.setContentType("text/plain");
