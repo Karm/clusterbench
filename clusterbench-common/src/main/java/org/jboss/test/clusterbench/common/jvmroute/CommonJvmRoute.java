@@ -53,6 +53,7 @@ public class CommonJvmRoute {
               on = new ObjectName("jboss.as:subsystem=web");
               jvmRoute4 = (String) mbsc.getAttribute(on, "instance-id");
             } catch (InstanceNotFoundException ex3) {
+              jvmRoute4 = UNKNOWN;
               log.log(Level.WARNING, "We have failed to determine the jvmRoute.");
             }
           }
@@ -75,7 +76,6 @@ public class CommonJvmRoute {
         e.printStackTrace();
       }
     }
-
     String jvmRoute = UNKNOWN;
     if (!jvmRoute1.equals(UNKNOWN)) {
       jvmRoute = jvmRoute1;
@@ -90,12 +90,4 @@ public class CommonJvmRoute {
     }
     return jvmRoute;
   }
-
-  /*
-   * protected String getInitParameter(String name, String defaultValue) { String value = this.getInitParameter(name);
-   * 
-   * if (value == null) { value = this.getServletContext().getInitParameter(name); }
-   * 
-   * return (value != null) ? value : defaultValue; }
-   */
 }
