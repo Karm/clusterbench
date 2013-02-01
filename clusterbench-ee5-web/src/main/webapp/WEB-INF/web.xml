@@ -46,6 +46,10 @@
         <servlet-name>RequestInfoServlet</servlet-name>
         <url-pattern>/requestinfo</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RequestInfoServlet</servlet-name>
+        <url-pattern>/requestinfo/*</url-pattern>
+    </servlet-mapping>
 
     <!-- Load -->
     <servlet>
