@@ -115,7 +115,7 @@ public class MemoryUsageStress {
     int nonHeapUsed = (int) (getNonHeapMem().getUsed() >> 20);
     int nonHeapCommitted = (int) (getNonHeapMem().getCommitted() >> 20);
     int nonHeapMax = (int) (getNonHeapMem().getMax() >> 20);
-    int nonHeapUsedOfMax = (nonHeapMax !=0 ) ? nonHeapUsed / (nonHeapMax / 100) : -1;
+    int nonHeapUsedOfMax = ((nonHeapMax / 100) != 0) ? nonHeapUsed / (nonHeapMax / 100) : -1;
 
     String physicalAndRuntime = String.format("Physical: TOTAL: %dMB, FREE: %dMB (%d%%)\nRuntime:  TOTAL: %dMB, FREE: %dMB, MAX: %dMB, TotalOfMax: %d%%\n", totalMB, freeMB, physPercent, runtimeTotal, runtimeFree, runtimeMax, runtimePercent);
     String heap = String.format("Heap:     INIT: %dMB, USED: %dMB, COMMITTED: %dMB, MAX: %dMB, UsedOfMax: %d%%\n", heapInt, heapUsed, heapCommitted, heapMax, heapUsedOfMax);
