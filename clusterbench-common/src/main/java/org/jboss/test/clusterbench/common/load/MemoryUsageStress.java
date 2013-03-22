@@ -100,21 +100,22 @@ public class MemoryUsageStress {
     long totalMB = total >> 20; // like /1024 /1024 ;-)
     long free = getFreePhysical();
     long freeMB = free >> 20;
-    int physPercent = (int) (free / (total / 100));
+    // -1 as a special value where java.lang.ArithmeticException: / by zero
+    int physPercent = (total != 0) ? (int) (free / (total / 100)) : -1;
     int runtimeTotal = (int) (Runtime.getRuntime().totalMemory() >> 20);
     int runtimeFree = (int) (Runtime.getRuntime().freeMemory() >> 20);
     int runtimeMax = (int) (Runtime.getRuntime().maxMemory() >> 20);
-    int runtimePercent = runtimeTotal / (runtimeMax / 100);
+    int runtimePercent = (runtimeMax != 0) ? runtimeTotal / (runtimeMax / 100) : -1;
     int heapInt = (int) (getHeapMem().getInit() >> 20);
     int heapUsed = (int) (getHeapMem().getUsed() >> 20);
     int heapCommitted = (int) (getHeapMem().getCommitted() >> 20);
     int heapMax = (int) (getHeapMem().getMax() >> 20);
-    int heapUsedOfMax = heapUsed / (heapMax / 100);
+    int heapUsedOfMax = (heapMax != 0) ? heapUsed / (heapMax / 100) : -1;
     int nonHeapInt = (int) (getNonHeapMem().getInit() >> 20);
     int nonHeapUsed = (int) (getNonHeapMem().getUsed() >> 20);
     int nonHeapCommitted = (int) (getNonHeapMem().getCommitted() >> 20);
     int nonHeapMax = (int) (getNonHeapMem().getMax() >> 20);
-    int nonHeapUsedOfMax = nonHeapUsed / (nonHeapMax / 100);
+    int nonHeapUsedOfMax = (nonHeapMax !=0 ) ? nonHeapUsed / (nonHeapMax / 100) : -1;
 
     String physicalAndRuntime = String.format("Physical: TOTAL: %dMB, FREE: %dMB (%d%%)\nRuntime:  TOTAL: %dMB, FREE: %dMB, MAX: %dMB, TotalOfMax: %d%%\n", totalMB, freeMB, physPercent, runtimeTotal, runtimeFree, runtimeMax, runtimePercent);
     String heap = String.format("Heap:     INIT: %dMB, USED: %dMB, COMMITTED: %dMB, MAX: %dMB, UsedOfMax: %d%%\n", heapInt, heapUsed, heapCommitted, heapMax, heapUsedOfMax);
