@@ -6,6 +6,7 @@ import java.lang.management.MemoryUsage;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.management.AttributeNotFoundException;
 import javax.management.JMException;
 import javax.management.MBeanServer;
 import javax.management.MalformedObjectNameException;
@@ -96,12 +97,7 @@ public class MemoryUsageStress {
   }
 
   public String getStats() throws JMException {
-    long total = getTotalPhysical();
-    long totalMB = total >> 20; // like /1024 /1024 ;-)
-    long free = getFreePhysical();
-    long freeMB = free >> 20;
     // -1 as a special value where java.lang.ArithmeticException: / by zero
-    int physPercent = (total != 0) ? (int) (free / (total / 100)) : -1;
     int runtimeTotal = (int) (Runtime.getRuntime().totalMemory() >> 20);
     int runtimeFree = (int) (Runtime.getRuntime().freeMemory() >> 20);
     int runtimeMax = (int) (Runtime.getRuntime().maxMemory() >> 20);
@@ -116,10 +112,20 @@ public class MemoryUsageStress {
     int nonHeapCommitted = (int) (getNonHeapMem().getCommitted() >> 20);
     int nonHeapMax = (int) (getNonHeapMem().getMax() >> 20);
     int nonHeapUsedOfMax = ((nonHeapMax / 100) != 0) ? nonHeapUsed / (nonHeapMax / 100) : -1;
-
-    String physicalAndRuntime = String.format("Physical: TOTAL: %dMB, FREE: %dMB (%d%%)\nRuntime:  TOTAL: %dMB, FREE: %dMB, MAX: %dMB, TotalOfMax: %d%%\n", totalMB, freeMB, physPercent, runtimeTotal, runtimeFree, runtimeMax, runtimePercent);
     String heap = String.format("Heap:     INIT: %dMB, USED: %dMB, COMMITTED: %dMB, MAX: %dMB, UsedOfMax: %d%%\n", heapInt, heapUsed, heapCommitted, heapMax, heapUsedOfMax);
     String nonHeap = String.format("NonHeap:  INIT: %dMB, USED: %dMB, COMMITTED: %dMB, MAX: %dMB, UsedOfMax: %d%%", nonHeapInt, nonHeapUsed, nonHeapCommitted, nonHeapMax, nonHeapUsedOfMax);
+    String physicalAndRuntime = null;
+    try {
+      long total = getTotalPhysical();
+      long totalMB = total >> 20; // like /1024 /1024 ;-)
+      long free = getFreePhysical();
+      long freeMB = free >> 20;
+      // -1 as a special value where java.lang.ArithmeticException: / by zero
+      int physPercent = (total != 0) ? (int) (free / (total / 100)) : -1;
+      physicalAndRuntime = String.format("Physical: TOTAL: %dMB, FREE: %dMB (%d%%)\nRuntime:  TOTAL: %dMB, FREE: %dMB, MAX: %dMB, TotalOfMax: %d%%\n", totalMB, freeMB, physPercent, runtimeTotal, runtimeFree, runtimeMax, runtimePercent);
+    } catch (AttributeNotFoundException ex) {
+      return heap + nonHeap;
+    }
     return physicalAndRuntime + heap + nonHeap;
   }
 }
