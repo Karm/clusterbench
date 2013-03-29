@@ -1,6 +1,8 @@
 package org.jboss.test.clusterbench.common.jvmroute;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpSession;
 public class CommonRequestInfoServlet extends HttpServlet {
   private static final long serialVersionUID = -2126246174508889343L;
   private CommonJvmRoute commonJvmRoute = new CommonJvmRoute();
+  private static final Logger log = Logger.getLogger(CommonRequestInfoServlet.class.getName());
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -36,6 +39,7 @@ public class CommonRequestInfoServlet extends HttpServlet {
     responseText.append("Session ServletContext: " + session.getServletContext());
     responseText.append("\n");
     response.getWriter().print(responseText.toString());
+    log.log(Level.INFO, responseText.toString());
   }
 
   @Override
