@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class CommonRequestInfoServlet extends HttpServlet {
+public abstract class CommonRequestInfoServlet extends HttpServlet {
   private static final long serialVersionUID = -2126246174508889343L;
   private CommonJvmRoute commonJvmRoute = new CommonJvmRoute();
   private static final Logger log = Logger.getLogger(CommonRequestInfoServlet.class.getName());
+
+  protected abstract String getServletAPISpecificInfo();
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -37,6 +39,8 @@ public class CommonRequestInfoServlet extends HttpServlet {
     responseText.append("Session isNew: " + session.isNew());
     responseText.append("\n");
     responseText.append("Session ServletContext: " + session.getServletContext());
+    responseText.append("\n");
+    responseText.append("Servlet specific info: " + getServletAPISpecificInfo());
     responseText.append("\n");
     response.getWriter().print(responseText.toString());
     log.log(Level.INFO, responseText.toString());

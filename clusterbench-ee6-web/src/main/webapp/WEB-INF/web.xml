@@ -8,6 +8,9 @@
 
     <session-config>
         <session-timeout>1</session-timeout> <!-- minutes -->
+        <!-- Both URL and COOKIE is default. -->
+        <!-- <tracking-mode>URL</tracking-mode> -->
+        <!-- <tracking-mode>COOKIE</tracking-mode> -->
     </session-config>
 
     <!-- Welcome page with links to test scenarios -->
