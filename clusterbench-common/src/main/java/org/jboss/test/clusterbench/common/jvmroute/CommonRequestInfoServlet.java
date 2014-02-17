@@ -30,6 +30,10 @@ public abstract class CommonRequestInfoServlet extends HttpServlet {
     responseText.append("\n");
     responseText.append("Query string: " + request.getQueryString());
     responseText.append("\n");
+    responseText.append("Header names: " + request.getHeaderNames().toString());
+    responseText.append("\n");
+    responseText.append("Parameters map: " + request.getParameterMap().toString());
+    responseText.append("\n");
     responseText.append("Host header: " + request.getHeader("Host"));
     responseText.append("\n");
     responseText.append("JVM route: " + commonJvmRoute.jvmRoute());
