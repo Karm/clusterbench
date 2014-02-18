@@ -1,6 +1,10 @@
 package org.jboss.test.clusterbench.common.jvmroute;
 
 import java.io.IOException;
+import java.net.URLDecoder;
+import java.util.Enumeration;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -24,6 +28,11 @@ public abstract class CommonRequestInfoServlet extends HttpServlet {
     response.setContentType("text/plain");
     response.setCharacterEncoding("UTF-8");
     StringBuilder responseText = new StringBuilder();
+    /**
+     * == BIG EVIL WARNING ==
+     * There are tests out there, parsing for this output...
+     */
+    
     responseText.append("Request URI: ");
     responseText.append(request.getRequestURI());
     responseText.append("\n");
@@ -33,14 +42,43 @@ public abstract class CommonRequestInfoServlet extends HttpServlet {
     responseText.append("Query string: ");
     responseText.append(request.getQueryString());
     responseText.append("\n");
+    responseText.append("Query string UTF-8 decoded: ");
+    responseText.append((request.getQueryString() == null) ? "null" : URLDecoder.decode(request.getQueryString(), "UTF-8"));
+    responseText.append("\n");
     responseText.append("Remote user: ");
     responseText.append(request.getRemoteUser());
     responseText.append("\n");
-    responseText.append("Parameters map: ");
-    responseText.append(request.getParameterMap().toString());
-    responseText.append("\n");
+    responseText.append("Parameters map: {");
+    @SuppressWarnings("rawtypes") //Meh...
+    Map params = request.getParameterMap();
+    @SuppressWarnings("rawtypes")
+    Iterator i = params.keySet().iterator();
+    while (i.hasNext()) {
+      String key = (String) i.next();
+      String value = ((String[]) params.get(key))[0];
+      responseText.append(key);
+      responseText.append("=");
+      responseText.append(value);
+      if (i.hasNext()) responseText.append(", ");
+    }
+    responseText.append("}\n");
+    responseText.append("Headers: {");
+    @SuppressWarnings("unchecked")
+    Enumeration<String> headerNames = request.getHeaderNames();
+    while (headerNames.hasMoreElements()) {
+      String headerName = headerNames.nextElement();
+      String headerValue = request.getHeader(headerName);
+      responseText.append(headerName);
+      responseText.append("=");
+      responseText.append(headerValue);
+      if (headerNames.hasMoreElements()) responseText.append(", ");
+    }
+    responseText.append("}\n");
     responseText.append("Host header: ");
     responseText.append(request.getHeader("Host"));
+    responseText.append("\n");
+    responseText.append("Character encoding: ");
+    responseText.append(request.getCharacterEncoding());
     responseText.append("\n");
     responseText.append("JVM route: ");
     responseText.append(commonJvmRoute.jvmRoute());
