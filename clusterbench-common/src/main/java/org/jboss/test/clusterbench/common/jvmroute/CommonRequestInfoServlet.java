@@ -48,7 +48,7 @@ public abstract class CommonRequestInfoServlet extends HttpServlet {
     responseText.append("Remote user: ");
     responseText.append(request.getRemoteUser());
     responseText.append("\n");
-    responseText.append("Parameters map: {");
+    responseText.append("Parameters [key=value]: {");
     @SuppressWarnings("rawtypes") //Meh...
     Map params = request.getParameterMap();
     @SuppressWarnings("rawtypes")
@@ -56,10 +56,12 @@ public abstract class CommonRequestInfoServlet extends HttpServlet {
     while (i.hasNext()) {
       String key = (String) i.next();
       String value = ((String[]) params.get(key))[0];
+      responseText.append("[");
       responseText.append(key);
       responseText.append("=");
       responseText.append(value);
-      if (i.hasNext()) responseText.append(", ");
+      responseText.append("]");
+      if (i.hasNext()) responseText.append(" ");
     }
     responseText.append("}\n");
     responseText.append("Headers: {");

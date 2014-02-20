@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.jboss.test.clusterbench.common.SerialBean;
 
 public class CommonHttpSessionServlet extends HttpServlet {
+  private static final long serialVersionUID = 6413490751329934994L;
   private static final Logger log = Logger.getLogger(CommonHttpSessionServlet.class.getName());
   public static final String KEY = CommonHttpSessionServlet.class.getName();
 
