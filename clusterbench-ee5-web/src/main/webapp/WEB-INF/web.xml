@@ -26,6 +26,10 @@
         <servlet-name>HttpSessionServlet</servlet-name>
         <url-pattern>/session</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HttpSessionServlet</servlet-name>
+        <url-pattern>/session/*</url-pattern>
+    </servlet-mapping>
 
     <!-- JvmRoute -->
     <servlet>
@@ -35,6 +39,10 @@
     <servlet-mapping>
         <servlet-name>JvmRouteServlet</servlet-name>
         <url-pattern>/jvmroute</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>JvmRouteServlet</servlet-name>
+        <url-pattern>/jvmroute/*</url-pattern>
     </servlet-mapping>
 
     <!-- RequestInfo -->
@@ -60,6 +68,10 @@
         <servlet-name>AverageSystemLoadServlet</servlet-name>
         <url-pattern>/averagesystemload</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AverageSystemLoadServlet</servlet-name>
+        <url-pattern>/averagesystemload/*</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>MemoryUsageServlet</servlet-name>
         <servlet-class>org.jboss.test.clusterbench.web.load.MemoryUsageServlet</servlet-class>
@@ -67,6 +79,10 @@
     <servlet-mapping>
         <servlet-name>MemoryUsageServlet</servlet-name>
         <url-pattern>/memoryusage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>MemoryUsageServlet</servlet-name>
+        <url-pattern>/memoryusage/*</url-pattern>
     </servlet-mapping>
     <servlet>
         <servlet-name>BusyConnectorsLoadServlet</servlet-name>
@@ -76,6 +92,10 @@
         <servlet-name>BusyConnectorsLoadServlet</servlet-name>
         <url-pattern>/busyconnectorsload</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BusyConnectorsLoadServlet</servlet-name>
+        <url-pattern>/busyconnectorsload/*</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>SendTrafficLoadServlet</servlet-name>
         <servlet-class>org.jboss.test.clusterbench.web.load.SendTrafficLoadServlet</servlet-class>
@@ -84,6 +104,10 @@
         <servlet-name>SendTrafficLoadServlet</servlet-name>
         <url-pattern>/sendtrafficload</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SendTrafficLoadServlet</servlet-name>
+        <url-pattern>/sendtrafficload/*</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>ReceiveTrafficLoadServlet</servlet-name>
         <servlet-class>org.jboss.test.clusterbench.web.load.ReceiveTrafficLoadServlet</servlet-class>
@@ -91,6 +115,10 @@
     <servlet-mapping>
         <servlet-name>ReceiveTrafficLoadServlet</servlet-name>
         <url-pattern>/receivetrafficload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ReceiveTrafficLoadServlet</servlet-name>
+        <url-pattern>/receivetrafficload/*</url-pattern>
     </servlet-mapping>
 
 </web-app>
