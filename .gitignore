@@ -6,6 +6,14 @@
 .project
 .settings
 
+# IDEA IDE
+clusterbench-common/clusterbench-common.iml
+clusterbench-ee6-web/clusterbench-ee6-web.iml
+clusterbench.iml
+clusterbench.ipr
+clusterbench.iws
+projectFilesBackup/
+
 # Maven
 target/
 

@@ -45,6 +45,20 @@
         <url-pattern>/jvmroute/*</url-pattern>
     </servlet-mapping>
 
+    <!-- HTTPCode -->
+    <servlet>
+        <servlet-name>HTTPCodeServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.jvmroute.HTTPCodeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HTTPCodeServlet</servlet-name>
+        <url-pattern>/httpcode</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HTTPCodeServlet</servlet-name>
+        <url-pattern>/httpcode/*</url-pattern>
+    </servlet-mapping>
+
     <!-- RequestInfo -->
     <servlet>
         <servlet-name>RequestInfoServlet</servlet-name>

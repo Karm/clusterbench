@@ -1,9 +1,11 @@
 package org.jboss.test.clusterbench.web.session;
 
-import javax.servlet.annotation.WebServlet;
 import org.jboss.test.clusterbench.common.session.CommonHttpSessionServlet;
 
-@WebServlet(name = "HttpSessionServlet", urlPatterns = { "/session",  "/session/*" })
+import javax.servlet.annotation.WebServlet;
+
+@WebServlet(name = "HttpSessionServlet", urlPatterns = {"/session", "/session/*"})
 public class HttpSessionServlet extends CommonHttpSessionServlet {
-  private static final long serialVersionUID = -8035389950697077638L;
+    private static final long serialVersionUID = -8035389950697077638L;
+    // Silence is golden
 }
