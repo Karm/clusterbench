@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>ClusterBench</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="shortcut icon" href="favicon.ico">
+</head>
+<body>
+ <h1>Hello World, Hello ClusterBench!</h1>
+ <h2>Flavor</h2>
+ <p>EE7</p>
+
+ <h2>Usage</h2>
+ <ul>
+  <li><b>JvmRouteServlet</b> <a href="jvmroute">/jvmroute</a></li>
+  <li><b>HttpSessionServlet</b> <a href="session">/session</a></li>
+  <li><b>AverageSystemLoadServlet</b> <a
+   href="averagesystemload?milliseconds=20000&threads=4">/averagesystemload?milliseconds=20000&threads=4</a>
+  </li>
+  <li><b>BusyConnectorsLoadServlet</b> <a
+   href="busyconnectorsload?milliseconds=10000">/busyconnectorsload?milliseconds=10000</a>
+  </li>
+  <li><b>SendTrafficLoadServlet</b> <a
+   href="sendtrafficload?kilobytes=100">/sendtrafficload?kilobytes=100</a>
+  </li>
+  <li><b>ReceiveTrafficLoadServlet</b> Set <i>data</i> in POST
+   method to /receivetrafficload. See receiveTrafficLoadMetricManualTest
+   in clusterbench-common.</li>
+  <li><b>MemoryUsageServlet</b> <a
+   href="memoryusage?milliseconds=20000&megabytes=500">/memoryusage?milliseconds=20000&megabytes=500</a>
+  </li>
+ </ul>
+
+ <h2>Sources</h2>
+ <p>
+  <a href="https://github.com/Karm/clusterbench">https://github.com/Karm/clusterbench</a>
+ </p>
+</body>
+</html>

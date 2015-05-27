@@ -18,6 +18,15 @@
 
     <profiles>
         <profile>
+            <id>ee7</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <module>clusterbench-ee7-web</module>
+            </modules>
+        </profile>
+        <profile>
             <id>ee6</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
