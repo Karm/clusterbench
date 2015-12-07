@@ -20,3 +20,7 @@ target/
 # NetBeans IDE
 nb-configuration.xml
 *.NavData
+clusterbench.iml
+clusterbench-ee7-ear/clusterbench-ee7-ear.iml
+clusterbench-ee7-ejb/clusterbench-ee7-ejb.iml
+cookie.txt
