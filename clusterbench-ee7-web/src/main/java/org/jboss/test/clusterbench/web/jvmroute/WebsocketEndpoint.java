@@ -48,12 +48,15 @@ public class WebsocketEndpoint {
     public void end() {
         connections.remove(nickname);
         String message = String.format("Client:%s Action:%s", nickname, "has disconnected.");
-        sendMsg(message, nickname);
+        log.debug("Chat end: message: " + message + ", nickname:" + nickname);
+        if (connections.containsKey(nickname)) {
+            sendMsg(message, nickname);
+        }
     }
 
     @OnMessage
     public void incoming(String message) {
-        String filteredMessage = String.format("Client:%s Msg:\"%s\" Server:%s Counter:%d", nickname, message.toString(), commonJvmRoute.jvmRoute(), counter.getAndIncrement());
+        String filteredMessage = String.format("Client:%s Msg:\"%s\" Server:%s Counter:%d", nickname, message, commonJvmRoute.jvmRoute(), counter.getAndIncrement());
         sendMsg(filteredMessage, nickname);
     }
 
@@ -62,7 +65,6 @@ public class WebsocketEndpoint {
         log.error("Chat Error: " + t.toString(), t);
     }
 
-
     private static void sendMsg(String msg, String nickname) {
         WebsocketEndpoint client = connections.get(nickname);
         try {
@@ -70,7 +72,7 @@ public class WebsocketEndpoint {
                 client.session.getBasicRemote().sendText(msg);
             }
         } catch (IOException e) {
-            log.debug("Chat Error: Failed to send message to client", e);
+            log.debug("Chat Error: Failed to send message to client, nickname: " + nickname, e);
             connections.remove(client);
             try {
                 client.session.close();
