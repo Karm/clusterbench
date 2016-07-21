@@ -7,7 +7,7 @@
     <distributable />
 
     <session-config>
-        <session-timeout>1</session-timeout> <!-- minutes -->
+        <session-timeout>5</session-timeout> <!-- minutes -->
         <!-- Both URL and COOKIE is default. -->
         <!-- <tracking-mode>URL</tracking-mode> -->
         <!-- <tracking-mode>COOKIE</tracking-mode> -->
