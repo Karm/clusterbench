@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>org.jboss.test</groupId>
+  <artifactId>clusterbench-ee6-web</artifactId>
+  <version>2.0.1-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20160729.140153</timestamp>
+      <buildNumber>1</buildNumber>
+    </snapshot>
+    <lastUpdated>20160729140153</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>war</extension>
+        <value>2.0.1-20160729.140153-1</value>
+        <updated>20160729140153</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>2.0.1-20160729.140153-1</value>
+        <updated>20160729140153</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>
