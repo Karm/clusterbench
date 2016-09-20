@@ -45,6 +45,20 @@
         <url-pattern>/jvmroute/*</url-pattern>
     </servlet-mapping>
 
+    <!-- exit -->
+    <servlet>
+        <servlet-name>ExitServlet</servlet-name>
+        <servlet-class>org.jboss.test.clusterbench.web.exit.ExitServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ExitServlet</servlet-name>
+        <url-pattern>/exit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExitServlet</servlet-name>
+        <url-pattern>/exit/*</url-pattern>
+    </servlet-mapping>
+
     <!-- HTTPCode -->
     <servlet>
         <servlet-name>HTTPCodeServlet</servlet-name>
