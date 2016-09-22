@@ -10,6 +10,6 @@ public class ExitServlet extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    System.exit(1);
+    Runtime.getRuntime().halt(0);
   }
 }

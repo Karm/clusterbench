@@ -11,6 +11,6 @@ import java.io.IOException;
 public class ExitServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    System.exit(1);
+    Runtime.getRuntime().halt(0);
   }
 }
